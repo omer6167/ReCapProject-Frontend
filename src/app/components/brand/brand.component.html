@@ -1,0 +1,14 @@
+<!-- <h6>Brand Works</h6>
+<ul class="list-group list-group-flush">
+    <li *ngFor="let brand of brands">
+    {{brand.name}}</li>
+</ul>
+
+ -->
+<ul class="list-group list-group-flush">
+    <li (click)="setCurrentBrand(brand)" 
+    routerLink="/products/category/{{brand.id}}"
+    *ngFor="let brand of brands" 
+    [class]="setCurrentBrandClass(brand)">
+    {{brand.name}}</li>
+</ul>
