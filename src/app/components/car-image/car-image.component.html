@@ -1,0 +1,107 @@
+<div class="card-header text-center">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner  d-flex "
+      style="height: 50vh; min-height: 20rem; max-height: 30rem">
+      <div *ngFor="let image of carImage; index as i; first as firstImage"
+        class="carousel-item align-self-center"
+        [ngClass]="{ active: firstImage }" style="height: 100%; width: 100%">
+          <img src="{{imageBasePath}}{{image.imagePath}}" class=""
+          style="height: 100%; width: 100%; object-fit: contain" alt="{{image.carId}}"/>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div style="text-align:center"  aria-current="true" *ngIf="carDetail">
+      <h4>
+        {{carDetail.brandName}} {{carDetail.description}}
+      </h4>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Marka</th>
+            <th>Renk</th>
+            <th>Model Yılı</th>
+            <th>Fiyat</th>
+            <th>Açıklama</th> 
+          </tr>
+        </thead>
+          <tr *ngIf="carDetail" >
+            <td>{{carDetail.id}} </td>
+            <td>{{carDetail.brandName}}</td>
+            <td>{{carDetail.carName}}</td>
+            <td>{{carDetail.colorName}}</td>
+            <td>{{carDetail.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2"}}</td>
+            <td>{{carDetail.description}}</td>
+          </tr>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="carDetail" class="card-footage">
+    <div class="d-grid gap">
+      <button data-bs-toggle="modal" data-bs-target="#rentalModal" type="button" class="btn btn-primary"><strong>Kirala</strong></button>
+      <div class="modal fade" id="rentalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Kirala</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             <!--  <app-rental [cars]="carDetail"></app-rental> -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 
+<ng-container *ngIf="carDetailLoaded == true">data</ng-container> -->
+
+<table *ngIf="carImage"  class="table">
+  <tbody>
+    <tr>
+      <th>Marka</th>
+      <td>{{ carImage[0].imagePath }}</td>
+    </tr>
+    <tr>
+      <th>Model</th>
+      <td>{{ carDetail.carName }}</td>
+    </tr>
+    <tr>
+      <th>Renk</th>
+      <td>{{ carDetail.carName }}</td>
+    </tr>
+    <tr>
+      <th>Model Yılı</th>
+      <td>{{ carDetail.carName }}</td>
+    </tr>
+    <tr>
+      <th>Günlük Kiralama Ücreti</th>
+      <td>{{ carDetail.carName }}₺</td>
+    </tr>
+    <tr>
+      <th>Açıklama</th>
+      <td>{{ carDetail.carName }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <ng-container *ngIf="carDetailLoaded == false">data yüklenemedi</ng-container> -->

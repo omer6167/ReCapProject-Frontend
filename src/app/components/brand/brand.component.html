@@ -4,10 +4,13 @@
     {{brand.name}}</li>
 </ul>
 
- -->
+-->
+
+
+ <h5>Marka</h5>
 <ul class="list-group list-group-flush">
     <li (click)="setCurrentBrand(brand)" 
-    routerLink="/products/category/{{brand.id}}"
+    routerLink="car/brand/{{brand.id}}"
     *ngFor="let brand of brands" 
     [class]="setCurrentBrandClass(brand)">
     {{brand.name}}</li>

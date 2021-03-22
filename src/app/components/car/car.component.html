@@ -1,11 +1,34 @@
 <!-- <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div> -->
-<table *ngIf="dataLoaded==true" class="table">
+
+<div class="mb-3">
+  <label for="filterText" class="form-label">Ürün Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="fiterText" placeholder="Arama İfadesi Giriniz">
+</div>
+
+<div *ngIf='filterText.length>2' class="alert alert-success">
+  {{filterText}} aradınız
+</div>
+
+
+<ng-container *ngIf="dataLoaded==true">
+<div  *ngFor="let car of carDetails |filterPipe:filterText"  class="card" style="width: 18rem;"  >
+  <div class="card-body">
+    <h5 class="card-title">{{car.carName}},{{car.brandName}}</h5>
+    <p class="card-text">Price: {{car.dailyPrice}}</p>
+    <a routerLink="car/car-image/{{car.id}}" class="btn btn-primary">Detay Sayfasına Git</a>
+  </div>
+</div>
+</ng-container>
+
+<!-- <table *ngIf="dataLoaded==true" class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Name</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Color</th>
+      <th scope="col">Price</th>
     </tr>
   </thead>
   <tbody>
@@ -17,3 +40,4 @@
     </tr>
   </tbody>
 </table>
+ -->
