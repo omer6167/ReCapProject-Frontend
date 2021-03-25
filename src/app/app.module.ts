@@ -15,12 +15,12 @@ import { RentSummaryComponent } from './components/rent-summary/rent-summary.com
 
 import { ToastrModule } from 'ngx-toastr';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
-import { CarAddComponent } from './services/add/car-add/car-add.component';
+import { CarCudComponent } from './components/car-cud/car-cud.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +37,14 @@ import { CarAddComponent } from './services/add/car-add/car-add.component';
     CarFilterPipe,
     BrandFilterPipe,
     ColorFilterPipe,
-    CarAddComponent,
+    CarCudComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
