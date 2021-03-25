@@ -9,15 +9,18 @@ import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { RentalComponent } from './components/rental/rental.component';
-import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { CarImageComponent } from './components/car-image/car-image.component';
-import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { RentSummaryComponent } from './components/rent-summary/rent-summary.component';
+
 
 import { ToastrModule } from 'ngx-toastr';
-
+import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RentSummaryComponent } from './components/rent-summary/rent-summary.component';
+import { CarFilterPipe } from './pipes/car-filter.pipe';
+import { BrandFilterPipe } from './pipes/brand-filter.pipe';
+import { ColorFilterPipe } from './pipes/color-filter.pipe';
+import { CarAddComponent } from './services/add/car-add/car-add.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,12 @@ import { RentSummaryComponent } from './components/rent-summary/rent-summary.com
     NaviComponent,
     RentalComponent,
     VatAddedPipe,
-    FilterPipePipe,
     CarImageComponent,
     RentSummaryComponent,
+    CarFilterPipe,
+    BrandFilterPipe,
+    ColorFilterPipe,
+    CarAddComponent,
   ],
   imports: [
     BrowserModule,

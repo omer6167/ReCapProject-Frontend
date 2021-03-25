@@ -14,6 +14,8 @@ import { environment } from 'src/environments/environment';
 export class CarImageComponent implements OnInit {
   imageBasePath = environment.baseUrl;
 
+  //MycarImage="https://localhost:44388/Images/CarImages/22_3_2021__{9be7be6b-5f2d-4ce4-935f-33a3b1925b27}.jpg"
+
   carDetail: CarDetail;
   carImage: CarImage[] = [];
   imageLoaded = false;

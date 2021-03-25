@@ -11,7 +11,9 @@ import {FormsModule} from '@angular/forms'
 export class BrandComponent implements OnInit {
   constructor(private brandService: BrandService) {}
 
-  brands: Brand[] = [];
+   brandfilterText=""
+
+  brands: Brand[] = [];  
   dataLoaded = false;
   currentBrand: Brand;
 

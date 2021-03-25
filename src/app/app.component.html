@@ -1,21 +1,20 @@
-<div class="container">
-  <app-navi></app-navi>
+<app-navi></app-navi>
+<div class="container">  
   <div class="row">
-      <div class="col-md-3 pt-3">
-          <app-brand></app-brand>
-          <div class="alert alert-primary" role="alert">
-          </div>
-          <app-color></app-color>
-      </div>
-      <div class="col-md-9 pt-3">
-        <router-outlet></router-outlet>
-    
-        <div class="alert alert-primary" role="alert">
-        </div>
-        
-        <app-rent-summary></app-rent-summary>
-        
-      </div>
+    <div class="col-md-3 pt-3">
+      <app-brand></app-brand>
+    </div>
+
+    <div class="col-md-6 pt-3">
+      <router-outlet></router-outlet>
+ 
+      <app-rent-summary></app-rent-summary>
+
+      <div class="alert alert-primary" role="alert"></div>
+    </div>
+    <div class="col-md-3 pt-3">
+      <app-color></app-color>
+    </div>
   </div>
 </div>
 

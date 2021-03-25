@@ -4,20 +4,30 @@
 
 <div class="mb-3">
   <label for="filterText" class="form-label">Ürün Ara</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="fiterText" placeholder="Arama İfadesi Giriniz">
+  <input
+    type="text"
+    [(ngModel)]="carfilterText"
+    class="form-control"
+    id="fiterText"
+    placeholder="Arama İfadesi Giriniz"
+  />
 </div>
 
-<div *ngIf='filterText.length>2' class="alert alert-success">
-  {{filterText}} aradınız
+<div *ngIf="carfilterText.length > 2" class="alert alert-success">
+  {{ carfilterText }} aradınız
 </div>
 
 
-<ng-container *ngIf="dataLoaded==true">
-<div  *ngFor="let car of carDetails |filterPipe:filterText"  class="card" style="width: 18rem;"  >
-  <div class="card-body">
-    <h5 class="card-title">{{car.carName}},{{car.brandName}}</h5>
-    <p class="card-text">Price: {{car.dailyPrice}}</p>
-    <a routerLink="car/car-image/{{car.id}}" class="btn btn-primary">Detay Sayfasına Git</a>
+<ng-container *ngIf="dataLoaded == true">
+<div class="row">
+  <div *ngFor="let car of carDetails | carFilter: carfilterText" class="col-md-4">
+    <div class="card" style="width: 18rem"  >
+      <div class="card-body">
+        <h5 class="card-title">{{car.carName}},{{car.brandName}}</h5>
+        <p class="card-text">Price: {{car.dailyPrice}}</p>
+        <a routerLink="car/car-image/{{car.id}}" class="btn btn-primary" >Detay Sayfasına Git</a>
+      </div>
+    </div>
   </div>
 </div>
 </ng-container>
