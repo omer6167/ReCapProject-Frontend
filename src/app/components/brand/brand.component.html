@@ -1,12 +1,23 @@
-<!-- <h6>Brand Works</h6>
-<ul class="list-group list-group-flush">
-    <li *ngFor="let brand of brands">
-    {{brand.name}}</li>
-</ul>
 
--->
 
-<div class="mb-3">
+<form>
+  <div class="mb-3">
+    <span class="d-block p-2 bg-dark text-white">Markalar</span>
+
+    <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    
+    <select (change)="setCurrentBrand()" [(ngModel)]="currentBrand" name="brandSelect" class="form-select" aria-label="Markalar">
+      <option [ngValue]="allBrand" [selected]="allBrandSelected()" >Tüm Markalar</option>
+      <option [ngValue]="brand" *ngFor="let brand of brands" >{{ brand.name }}</option>
+    </select>
+
+  </div>
+</form>
+
+
+<!-- <div class="mb-3">
     <label for="filterText" class="form-label">Ürün Ara</label>
     <input
       type="text"
@@ -29,4 +40,4 @@
     *ngFor="let brand of brands | brandFilter:brandfilterText" 
     [class]="setCurrentBrandClass(brand)">
     {{brand.name}}</li>
-</ul>
+</ul> -->

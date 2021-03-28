@@ -19,12 +19,13 @@ export class RentalComponent implements OnInit {
     this.getRentalDetails();
   }
 
-  getRentals() {
-    this.rentalService.getRentals().subscribe((response) => {
-      this.rentals = response.data;
-      this.dataLoaded = true;
-    });
-  }
+  // getRentals() {
+  //   this.rentalService.getRentals().subscribe((response) => {
+  //     this.rentals = response.data;
+  //     this.dataLoaded = true;
+  //   });
+  // }
+  
   getRentalDetails() {
     this.rentalService.getRentalDetails().subscribe((response) => {
       this.rentalDetails = response.data;

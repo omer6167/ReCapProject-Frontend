@@ -1,3 +1,22 @@
+<form>
+  <div class="mb-3">
+    <span class="d-block p-2 bg-dark text-white">Renkler</span>
+
+    <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <select [(ngModel)]="currentColor" (change)="setCurrentColor()" name="colorSelect" class="form-select mb-1" aria-label="Default select example" >
+      <option [selected]="allColorsSelected()" [ngValue]="allColor">Tüm Renkler</option>
+      <option *ngFor="let color of colors" [ngValue]="color"> {{ color.name }} </option>
+    </select>
+
+  </div>
+</form>
+
+
+
+<!-- 
 <div class="mb-3">
     <label for="filterText" class="form-label">Ürün Ara</label>
     <input
@@ -24,4 +43,4 @@
     [class]="setCurrentColorClass(color)"
     >
     {{color.name}}</li>
-</ul>
+</ul> -->

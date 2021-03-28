@@ -4,5 +4,7 @@ export interface RentACarDetail {
   companyName: string;
   brandName: string; 
   rentDate:Date;
-  returnDate:Date;
+  returnDate?:Date;
+  dailyPrice: number,
+  description: string,
 }

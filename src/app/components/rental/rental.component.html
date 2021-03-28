@@ -1,5 +1,40 @@
-<h6>Rentals</h6>
+<h6><strong>Kiralık Araçlar</strong></h6>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Araba İsmi</th>
+        <th scope="col">Kiralayan</th>
+        <th scope="col">Şirket</th>
+        <th scope="col">Marka</th>
+        <th scope="col">Kiralama tarihi</th>
+        <th scope="col">Geri Dönüş Tarihi</th>
+        <th scope="col">Açıklama</th>
+        <th scope="col">Günlük Ücret</th>
+        <th scope="col">İşlem yapılan Kart Sahibi</th>
+        <th scope="col">Kart Numarası</th>       
+        <th scope="col">Ödenen Ücret</th>   
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rentalDetails">
+        <td>{{rental.carName}}</td>
+        <td>{{rental.fullName}}</td>
+        <td>{{rental.companyName}}</td>
+        <td>{{rental.brandName}}</td>
+        <td>{{rental.rentDate}}</td>
+        <td>{{rental.returnDate}}</td>
+        <td>{{rental.description}}</td>
+        <td>{{rental.dailyPrice}}</td>
+        <td>Credi ile ödeme eklenecek</td>
+        <td>Credi ile ödeme eklenecek</td>
+        <td>Credi ile ödeme eklenecek</td>
+      </tr>     
+    </tbody>
+  </table>
+
+
+<!-- <h6>Rentals</h6>
 <ul class="list-group list-group-flush">
     <li *ngFor="let rental of rentalDetails">
     {{rental.carName}}</li>
-</ul>
+</ul> -->

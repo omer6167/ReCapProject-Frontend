@@ -21,6 +21,9 @@ import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { CarCudComponent } from './components/car-cud/car-cud.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { CarCudComponent } from './components/car-cud/car-cud.component';
     BrandFilterPipe,
     ColorFilterPipe,
     CarCudComponent,
+    FooterComponent,
+    SidebarComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

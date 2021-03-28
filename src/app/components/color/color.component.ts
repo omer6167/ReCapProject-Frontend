@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Color } from 'src/app/models/color';
+import { Filters } from 'src/app/models/filters';
 import { ColorService } from 'src/app/services/color.service';
 
 @Component({
@@ -8,12 +10,19 @@ import { ColorService } from 'src/app/services/color.service';
   styleUrls: ['./color.component.css']
 })
 export class ColorComponent implements OnInit {
-  constructor(private colorService: ColorService) {}
+  constructor(
+    private colorService: ColorService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+    ) {}
 
-  colorfilterText=""
+  //colorfilterText=""
 
   colors: Color[] = [];
-  currentColor:Color;
+  currentColor : Color | null;
+  allColor?: Color;
+  Filters = {brandId: '', colorId: ''};
+
   dataLoaded = false;
 
   ngOnInit(): void {
@@ -27,8 +36,14 @@ export class ColorComponent implements OnInit {
     });
   }
 
-  setCurrentColor(color: Color) {
-    this.currentColor = color;
+  setCurrentColor() {
+       this.currentColor !== undefined
+      ? (Filters.colorId = this.currentColor.id)
+      : (Filters.colorId = null);
+  }
+
+  allColorsSelected() {
+    return this.currentColor == undefined ? true : false;
   }
 
   setCurrentColorClass(color: Color) {
