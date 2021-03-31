@@ -1,3 +1,3 @@
-import { RentItem } from "./rentItem";
+// import { RentItem } from "./rentItem";
 
-export const RentItems:RentItem[]=[]
+// export const RentItems:RentItem[]=[]

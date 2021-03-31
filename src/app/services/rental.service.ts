@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
 import { RentACarDetail } from '../models/DTOs/rentACarDetail';
-import { Rent } from '../models/rent';
-import { RentItems } from '../models/rentItems';
-import { RentItem } from '../models/rentItem';
+import { environment } from 'src/environments/environment';
+import { ResponseModel } from '../models/responseModel';
+// import { RentItems } from '../models/rentItems';
+// import { RentItem } from '../models/rentItem';
 
 @Injectable({
   providedIn: 'root',
@@ -19,28 +20,34 @@ export class RentalService {
 
 
 
-  addToRentt(rent: Rent) {
-    let item = RentItems.find(r=>r.rent.carId==rent.carId)
-    if(item){
-      item.quantity +=1;
-    }else{
-      let rentItem = new RentItem();
-      rentItem.rent =rent;
-      rentItem.quantity=1;
+  // addToRentt(rent: Rental) {
+  //   let item = RentItems.find(r=>r.rent.carId==rent.carId)
+  //   if(item){
+  //     item.quantity +=1;
+  //   }else{
+  //     let rentItem = new RentItem();
+  //     rentItem.rent =rent;
+  //     rentItem.quantity=1;
 
-      RentItems.push(rentItem);
-    }
-  }
+  //     RentItems.push(rentItem);
+  //   }
+  // }
 
-  removeFromCart(rent: Rent) {
-    let item:any = RentItems.find(r=>r.rent.carId==rent.carId);
-    RentItems.splice(RentItems.indexOf(item),1)
-  }
+  // removeFromCart(rent: Rental) {
+  //   let item:any = RentItems.find(r=>r.rent.carId==rent.carId);
+  //   RentItems.splice(RentItems.indexOf(item),1)
+  // }
   
-  list():RentItem[]{
-    return RentItems;
-  }
+  // list():RentItem[]{
+  //   return RentItems; rentals/rent
+  // }
 
+  rent(rental:Rental):Observable<ResponseModel>{
+    //if(rental.fakeCardId==null)
+    let path = environment.apiUrl+"rentals/rent"
+    console.log(rental);
+    return this.httpClient.post<ResponseModel>(path,rental); //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı
+  }
 
 
   //Get işlemleri

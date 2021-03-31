@@ -20,6 +20,8 @@ export class CarImageComponent implements OnInit {
   carImage: CarImage[] = [];
   imageLoaded = false;
   carDetailLoaded = false;
+  
+  status=true; //İyileştirilecek
 
   constructor(
     private carImageService: CarImageService,

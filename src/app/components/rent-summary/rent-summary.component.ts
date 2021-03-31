@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/DTOs/carDetail';
-import { Rent } from 'src/app/models/rent';
-import { RentItem } from 'src/app/models/rentItem';
+// import { Rent } from 'src/app/models/rent';
+// import { RentItem } from 'src/app/models/rentItem';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./rent-summary.component.css'],
 })
 export class RentSummaryComponent implements OnInit {
-  rentItems: RentItem[] = []; //İlk değer boş
+   // rentItems: RentItem[] = []; 
 
   constructor(
     private rentService: RentalService,
@@ -20,17 +20,16 @@ export class RentSummaryComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getRentt() {
-    this.rentItems = this.rentService.list();
+ 
   }
 
-  removeFromRent(rent: Rent) {
+  // removeFromRent(rent: Rent) {
     
-    // rent.customerId= carDetail.customerId
-    rent.rentDate = new Date(Date.now());
+  //   // rent.customerId= carDetail.customerId
+  //   rent.rentDate = new Date(Date.now());
 
-    this.rentService.removeFromCart(rent);
+  //   this.rentService.removeFromCart(rent);
 
-    this.toastrService.error(rent.carId + 'sepetten silindi', 'Silindi');
-  }
-}
+  //   this.toastrService.error(rent.carId + 'sepetten silindi', 'Silindi');
+  // }
+

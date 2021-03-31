@@ -53,9 +53,6 @@ export class CarService {
     );
   }
   delete(car: Car): Observable<ResponseModel> {
-    return this.httpClient.post<ResponseModel>(
-      environment.apiUrl + 'Cars/delete',
-      car
-    );
+    return this.httpClient.post<ResponseModel>(environment.apiUrl + 'Cars/delete',car);
   }
 }

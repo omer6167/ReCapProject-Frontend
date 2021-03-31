@@ -24,6 +24,7 @@ import { CarCudComponent } from './components/car-cud/car-cud.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RentComponent } from './components/rent/rent.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     ColorFilterPipe,
     CarCudComponent,
     FooterComponent,
-    SidebarComponent,
-    PaymentComponent,
+    SidebarComponent,     
+    PaymentComponent, RentComponent,
   ],
   imports: [
     BrowserModule,

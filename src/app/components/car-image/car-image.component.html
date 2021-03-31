@@ -48,9 +48,24 @@
     </div>
   </div>
 
-<!--   <div *ngIf="carDetail" class="card-footage">
+  <div>
+    <div class="card-body d-grid gap-2 mx-auto">
+      <div *ngIf="status == true" class="btn-group me-2">
+        <div style="margin: auto;">
+          <app-rent [cars]="carDetail"></app-rent>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2 mb-2" *ngIf="status == false">
+      <div class="alert alert-danger">Araç Şuan Kiralanamaz</div>
+    </div>
+  </div>
+
+
+
+  <!-- <div *ngIf="carDetail" class="card-footage">
     <div class="d-grid gap">
-      <button data-bs-toggle="modal" data-bs-target="#rentalModal" type="button" class="btn btn-primary"><strong>Kirala</strong></button>
+      <button data-bs-toggle="modal" data-bs-target="#rentalModal" type="button" class="btn btn-primary" >Kirala</button>
       <div class="modal fade" id="rentalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -59,7 +74,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <app-rental [cars]="carDetail"></app-rental>
+              <app-payment [cars]="carDetail"></app-payment>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -67,9 +82,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div> -->
+    </div> -->
 
 
 <!-- 
