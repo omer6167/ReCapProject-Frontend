@@ -4,6 +4,7 @@ import { CarImage } from 'src/app/models/carImage';
 import { CarDetail } from 'src/app/models/DTOs/carDetail';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { RentalService } from 'src/app/services/rental.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -21,19 +22,21 @@ export class CarImageComponent implements OnInit {
   imageLoaded = false;
   carDetailLoaded = false;
   
-  status=true; //İyileştirilecek
+  status=true; // refactor edilecek
 
   constructor(
     private carImageService: CarImageService,
     private activetedRoot: ActivatedRoute,
-    private carService: CarService
+    private carService: CarService,
+    private rentalService:RentalService,
   ) {}
 
   ngOnInit(): void {
     this.activetedRoot.params.subscribe((params) => {
       if (params['carId']) {
+        this.isRentable(params['carId']);
         this.getImagesByCarId(params['carId']);
-        this.getCarDetailById(params['carId']);
+        this.getCarDetailById(params['carId']);        
       }
     });
   }
@@ -50,6 +53,13 @@ export class CarImageComponent implements OnInit {
       this.carImage = response.data;
       this.imageLoaded = true;
     });
+  }
+
+  isRentable(carId: number){
+    this.rentalService.IsRentable(carId).subscribe((response)=>{
+      console.log(response.success);
+      this.status=response.success;
+    })
   }
 
   // getSliderClassName(index: Number) {

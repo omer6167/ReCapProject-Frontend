@@ -58,4 +58,9 @@ export class RentalService {
   getRentalDetails(): Observable<ListResponseModel<RentACarDetail>> {
     return this.httpClient.get<ListResponseModel<RentACarDetail>>(this.apiDetailUrl); //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı
   }
+
+  IsRentable(carId:number) :Observable<ResponseModel>{
+    let path = environment.apiUrl +"rentals/isrentable?carId="+carId
+    return this.httpClient.get<ListResponseModel<RentACarDetail>>(path);
+  }
 }
