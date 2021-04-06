@@ -14,10 +14,11 @@ import { environment } from 'src/environments/environment';
 export class CarService {
   constructor(private httpClient: HttpClient) {}
 
-  /*  getCars():Observable<ListResponseModel<Car>>{
+  getCars():Observable<ListResponseModel<Car>>{
+    let newPath= environment.apiUrl+"Cars/getall"
     return this.httpClient
-     .get<ListResponseModel<Car>>(this.apiUrl) //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı 
-   } */
+     .get<ListResponseModel<Car>>(newPath) //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı 
+   } 
 
   getCarDetails(): Observable<ListResponseModel<CarDetail>> {
     let newPath = environment.apiUrl + 'Cars/getcardetails';

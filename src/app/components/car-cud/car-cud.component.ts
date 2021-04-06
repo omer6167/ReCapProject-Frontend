@@ -22,7 +22,9 @@ export class CarCudComponent implements OnInit {
     private toastrService: ToastrService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.createCarForm();
+  }
 
   //3 tane add,update,delete için carform oluşturulacak 
   createCarForm() {
@@ -37,33 +39,7 @@ export class CarCudComponent implements OnInit {
     });
   }
 
-  add() {
-    if (this.CarForm.valid) {
-      let carModel = Object.assign({}, this.CarForm.value);
-
-      this.carService.add(carModel).subscribe(
-        (response) => {
-          this.toastrService.success(response.message, 'Başarılı');
-        },
-        (responseError) => {
-          if (responseError.error.ValidateErrors.length > 0) {
-            for (
-              let i = 0;
-              i < responseError.error.ValidateErrors.length;
-              i++
-            ) {
-              this.toastrService.error(
-                responseError.error.ValidateErrors[i].ErrorMessage,
-                'Doğrulama hatası'
-              );
-            }
-          }
-        }
-      );
-    } else {
-      this.toastrService.error('Formunuz eksik', 'Dikkat');
-    }
-  }
+ 
 
   update() {
     if (this.CarForm.valid) {
