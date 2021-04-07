@@ -28,6 +28,7 @@ import { BrandAddComponent } from './components/addComponents/brand-add/brand-ad
 import { BrandListComponent } from './components/listComponents/brand-list/brand-list.component';
 import { ColorListComponent } from './components/listComponents/color-list/color-list.component';
 import { CarListComponent } from './components/listComponents/car-list/car-list.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { CarListComponent } from './components/listComponents/car-list/car-list.
     ColorFilterPipe,
     FooterComponent,
     SidebarComponent,     
-    PaymentComponent, RentComponent, CarAddComponent, ColorAddComponent, BrandAddComponent, BrandListComponent, ColorListComponent, CarListComponent
+    PaymentComponent, RentComponent, CarAddComponent, ColorAddComponent, BrandAddComponent, BrandListComponent, ColorListComponent, CarListComponent, LoginComponent
   ],
   imports: [
     BrowserModule,

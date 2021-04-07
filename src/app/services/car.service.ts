@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { CarDetail } from '../models/DTOs/carDetail';
-import { NonArrResponseModel } from '../models/nonArrResponseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 import { Car } from '../models/car';
 import { ResponseModel } from '../models/responseModel';
 import { environment } from 'src/environments/environment';
@@ -25,10 +25,10 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<CarDetail>>(newPath); //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı
   }
 
-  getCarDetailById(carId: number): Observable<NonArrResponseModel<CarDetail>> {
+  getCarDetailById(carId: number): Observable<SingleResponseModel<CarDetail>> {
     let newPath =
       environment.apiUrl + 'Cars/getcardetailbycarid?carId=' + carId;
-    return this.httpClient.get<NonArrResponseModel<CarDetail>>(newPath); //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı
+    return this.httpClient.get<SingleResponseModel<CarDetail>>(newPath); //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı
   }
 
   GetCarByBrandId(brandId: number): Observable<ListResponseModel<CarDetail>> {
