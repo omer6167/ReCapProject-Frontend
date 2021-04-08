@@ -6,4 +6,5 @@ export interface Car{
     modelYear:Date
     dailyPrice:number
     description:string
+    minFindexsScore:number
 }

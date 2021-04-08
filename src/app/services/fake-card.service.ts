@@ -21,13 +21,25 @@ export class FakeCardService {
     return this.httpClient.post<ResponseModel>(newPath,fakeCard);
   }
 
+  getCreditCardsByCustomerId(customerId:number):Observable<ListResponseModel<FakeCard>> {
+    return this.httpClient.get<ListResponseModel<FakeCard>>(environment.apiUrl + "fakecard/getbycustomerid?customerId=" + customerId);
+  }
+
   getCardByNumber(cardNumber:string):Observable<ListResponseModel<FakeCard>>{
     let newPath =  environment.apiUrl+ "fakecards/getbycardnumber?cardnumber=" + cardNumber;
     return this.httpClient.get<ListResponseModel<FakeCard>>(newPath);
+  }
+
+  addCreditCard(fakeCard:FakeCard):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(environment.apiUrl + "fakecard/add", fakeCard)
   }
 
   updateCard(fakeCard:FakeCard):Observable<ResponseModel>{
     let newPath =  environment.apiUrl+ "fakecards/update";
     return this.httpClient.post<ResponseModel>(newPath,fakeCard)
   }
+  deleteCard(fakeCard:FakeCard):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(environment.apiUrl + "fakecard/delete", fakeCard)
+  }
+
 }

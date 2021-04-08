@@ -11,6 +11,7 @@ import { BrandAddComponent } from './components/addComponents/brand-add/brand-ad
 import { ColorAddComponent } from './components/addComponents/color-add/color-add.component';
 import { CarAddComponent } from './components/addComponents/car-add/car-add.component';
 import { CarListComponent } from './components/listComponents/car-list/car-list.component';
+import { LoginGuard } from './guards/login.guard';
 
 
 const routes: Routes = [
@@ -26,16 +27,16 @@ const routes: Routes = [
   { path: 'customers', component: CustomerComponent },
  
   { path: "rental/:carId", component:RentalComponent},  
-  { path: "payment/:rental", component:PaymentComponent}, //  /:carDetail// Must make two json object
+  { path: "payment/:rental", component:PaymentComponent,canActivate:[LoginGuard]}, //  /:carDetail// Must make two json object
 
-  {path:"brands", component:BrandListComponent},
-  {path:"colors", component:ColorListComponent},
-  {path:"carslist",component:CarListComponent},
+  {path:"brands", component:BrandListComponent,canActivate:[LoginGuard]},
+  {path:"colors", component:ColorListComponent,canActivate:[LoginGuard]},
+  {path:"carslist",component:CarListComponent,canActivate:[LoginGuard]},
 
   
-  {path:"brands/add", component:BrandAddComponent},
-  {path:"colors/add", component:ColorAddComponent},
-  {path:"cars/add", component:CarAddComponent},
+  {path:"brands/add", component:BrandAddComponent,canActivate:[LoginGuard]},
+  {path:"colors/add", component:ColorAddComponent,canActivate:[LoginGuard]},
+  {path:"cars/add", component:CarAddComponent,canActivate:[LoginGuard]}, //Componente guard ekledik
 
 ];
 

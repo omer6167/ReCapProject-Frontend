@@ -42,7 +42,7 @@ export class BrandAddComponent implements OnInit {
           this.toastrService.success(response.message, 'Başarılı');
         },
         (responseError) => {
-          if (responseError.error.ValidateErrors.length > 0) {
+          if (responseError.error.ValidateErrors) {
             for (
               let i = 0;
               i < responseError.error.ValidateErrors.length;
@@ -53,6 +53,11 @@ export class BrandAddComponent implements OnInit {
                 'Doğrulama hatası'
               );
             }
+          }else{
+            this.toastrService.error(
+              'Yetkininiz Yok',
+              'Hata'
+            );
           }
         }
       );

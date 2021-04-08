@@ -16,59 +16,64 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a
-            routerLink="/cars"
-            class="nav-link"
-            >Araçlar</a
-          >
+          <a routerLink="/cars" class="nav-link">Araçlar</a>
         </li>
         <li class="nav-item">
-          <a
-            routerLink="/customers"
-            class="nav-link"
-            >Müşteriler</a
-          >
+          <a routerLink="/customers" class="nav-link">Müşteriler</a>
         </li>
         <li>
-          <a
-            routerLink="/rentals"
-            class="nav-link"
-            >Kiralanan Araçlar</a
-          >
+          <a routerLink="/rentals" class="nav-link">Kiralanan Araçlar</a>
         </li>
 
         <li>
-          <a
-            routerLink="/brands"
-            class="nav-link"
-            >Markaları Listele</a
-          >
+          <a routerLink="/brands" class="nav-link">Markaları Listele</a>
         </li>
         <li>
-          <a
-            routerLink="/colors"
-            class="nav-link"
-            >Renkleri Listele</a
-          >
+          <a routerLink="/colors" class="nav-link">Renkleri Listele</a>
         </li>
         <li>
-          <a
-            routerLink="/carslist"
-            class="nav-link"
-            >Araçları Listele</a
-          >
+          <a routerLink="/carslist" class="nav-link">Araçları Listele</a>
         </li>
-
       </ul>
-      <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+      <span class="my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" *ngIf="isLoggedIn() == false">
+            <a class="nav-link" routerLink="register">Register</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn() == false">
+            <a class="nav-link" routerLink="login">Login</a>
+          </li>
+          <div class="dropdown dropleft" *ngIf="isLoggedIn() == true">
+            <li class="nav-item">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {{ userInfos.firstName + " " + userInfos.lastName }}
+                <span class="label label-warning">
+                  FS: {{ userDetails.findeksScore }}
+                </span>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" routerLink="/updateinfos"
+                  ><i class="fa fa-edit"></i>&nbsp;Update Account Information</a
+                >
+                <a class="dropdown-item" routerLink="/updatepassword"
+                  ><i class="fa fa-lock"></i>&nbsp;&nbsp;Change Password</a
+                >
+                <a class="dropdown-item" (click)="logout()"
+                  ><i class="fa fa-sign-out"></i>&nbsp;Logout</a
+                >
+              </div>
+            </li>
+          </div>
+        </ul>
+      </span>
     </div>
   </div>
 </nav>
