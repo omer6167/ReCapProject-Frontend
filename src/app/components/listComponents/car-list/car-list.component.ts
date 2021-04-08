@@ -34,6 +34,7 @@ export class CarListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCars();
   }
 
   getCars() {

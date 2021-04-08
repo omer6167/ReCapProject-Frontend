@@ -14,13 +14,13 @@ import { environment } from 'src/environments/environment';
 
 export class ColorService {
 
-  apiUrl="https://localhost:44388/api/Colors/getall"
+  // apiUrl="https://localhost:44388/api/Colors/getall"
 
   constructor(private httpClient:HttpClient) { }
 
   getColors():Observable<ListResponseModel<Color>>{
     return this.httpClient
-     .get<ListResponseModel<Color>>(this.apiUrl) //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı 
+     .get<ListResponseModel<Color>>(environment.apiUrl+"Colors/getall") //generic bir şekilde gelen datayı mapping ediyoruz//observable tasarımı deseni uygulanacak,subscribe olunmadı 
    }
 
    

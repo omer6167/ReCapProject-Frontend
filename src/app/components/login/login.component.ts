@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +15,10 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private localStorage:LocalStorageService,
    private authService:AuthService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +32,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+  /*
+  yetki kontrolleri için token ekledik
+  Giriş yapan Kullanıcı ile ilişkilendirme
+   yapabilmemmiz için email değerini ekledik*/
   login() {
     if (this.loginForm.valid){
       console.log(this.loginForm.value);
@@ -35,7 +44,9 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(loginModel).subscribe(response=>{
         this.toastrService.info(response.message)
-        localStorage.setItem("token",response.data.token)
+        this.localStorage.setItem("token",response.data.token)
+        this.localStorage.setItem("email", this.loginForm.get("email")?.value)
+        setTimeout(() => { this.router.navigate(['/cars']) }, 1000);
         },responseError=>{
         //console.log(responseError)
         this.toastrService.error(responseError.error)
