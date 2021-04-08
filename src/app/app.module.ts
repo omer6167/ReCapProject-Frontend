@@ -30,6 +30,10 @@ import { ColorListComponent } from './components/listComponents/color-list/color
 import { CarListComponent } from './components/listComponents/car-list/car-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
+import { FakeCardListComponent } from './components/listComponents/fake-card-list/fake-card-list.component';
+import { UserInfosUpdateComponent } from './components/userOperations/user-infos-update/user-infos-update.component';
+import { UserPasswordUpdateComponent } from './components/userOperations/user-password-update/user-password-update.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ColorFilterPipe,
     FooterComponent,
     SidebarComponent,     
-    PaymentComponent, RentComponent, CarAddComponent, ColorAddComponent, BrandAddComponent, BrandListComponent, ColorListComponent, CarListComponent, LoginComponent
+    PaymentComponent, RentComponent, CarAddComponent, ColorAddComponent, BrandAddComponent, BrandListComponent, ColorListComponent, CarListComponent, LoginComponent, RegisterComponent, FakeCardListComponent, UserInfosUpdateComponent, UserPasswordUpdateComponent
   ],
   imports: [
     BrowserModule,

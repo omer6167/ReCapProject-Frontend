@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { PasswordChangingDetail } from '../models/DTOs/passwordChangingDetail';
 import { LoginModel } from '../models/loginModel';
 import { RegisterModel } from '../models/registerModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/tokenModel';
-import { UserPasswordChangingModel } from '../models/userPasswordChangingModel';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -42,7 +42,7 @@ export class AuthService {
     return true;
   }
 
-  updateUserPassword(userPasswordChangingModel:UserPasswordChangingModel) {
-    return this.httpClient.post<ResponseModel>(environment.apiUrl + "auth/changepassword", userPasswordChangingModel)
+  updateUserPassword(passwordChangingDetail:PasswordChangingDetail) {
+    return this.httpClient.post<ResponseModel>(environment.apiUrl + "auth/changepassword", passwordChangingDetail)
   }
 }

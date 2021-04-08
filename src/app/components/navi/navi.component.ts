@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDetail } from 'src/app/models/DTOs/userDetail';
-import { UserInfos } from 'src/app/models/DTOs/UserInfos';
+import { UserInfos } from 'src/app/models/DTOs/userInfos';
+
 import { AuthService } from 'src/app/services/auth.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -23,9 +24,11 @@ export class NaviComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let email = this.localStorage.getItem("email");
-    this.getUser(email == null ? email = "" : email.toString());
-    this.getCustomerId(email == null ? email = "" : email.toString());
+    let email=this.localStorage.getItem("email");
+    if (email!=null){
+      this.getUser(email);
+      this.getCustomerId(email);
+    }    
   }
 
   isLoggedIn() {
@@ -50,10 +53,7 @@ export class NaviComponent implements OnInit {
           this.localStorage.setItem("customerId", this.userDetails.id)
         },responseError => 
         { 
-      console.log("You are not customer yet.") } //İyileştirilecek
-       
+      console.log("You are not customer yet.") } //İyileştirilecek       
       )
   }
-
-
 }

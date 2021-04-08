@@ -30,7 +30,7 @@ export class FakeCardService {
     return this.httpClient.get<ListResponseModel<FakeCard>>(newPath);
   }
 
-  addCreditCard(fakeCard:FakeCard):Observable<ResponseModel>{
+  addCard(fakeCard:FakeCard):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(environment.apiUrl + "fakecard/add", fakeCard)
   }
 
@@ -41,5 +41,4 @@ export class FakeCardService {
   deleteCard(fakeCard:FakeCard):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(environment.apiUrl + "fakecard/delete", fakeCard)
   }
-
 }

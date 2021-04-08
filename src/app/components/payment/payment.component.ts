@@ -24,12 +24,18 @@ export class PaymentComponent implements OnInit {
   cars: CarDetail;
   customer: Customer;
   getCustomerId: number;
+
   amountOfPayment: number = 0;
   nameOnTheCard: string;
+  
   cardNumber: string;
   cardCvv: string;
   expirationDate: string;
+
+
+  fakeCards: FakeCard[];
   fakeCard: FakeCard;
+
   cardExist: Boolean = false;
 
   constructor(
@@ -53,6 +59,13 @@ export class PaymentComponent implements OnInit {
       }
     });
   }
+
+  // getCreditCardsByCustomerId(customerId:number) {
+  //   this.fakeCardService.getCreditCardsByCustomerId(customerId).subscribe((response) => {
+  //     this.fakeCards = response.data;
+  //   })
+  // }
+
 
   getCustomerDetailById(customerId: number) {
     this.customerService.getById(customerId).subscribe((response) => {
@@ -92,6 +105,7 @@ export class PaymentComponent implements OnInit {
 
   async rentACar() {
     let fakeCard: FakeCard = {
+      customerId: this.getCustomerId,
       name: this.nameOnTheCard,
       number: this.cardNumber,
       expirationDate: this.expirationDate,
@@ -130,6 +144,8 @@ export class PaymentComponent implements OnInit {
       .data[0];
   }
 
+
+  //Transact Araştırılacak
   async payTransact(payment:Payment,fakeCard:FakeCard,rental:Rental){
     this.updateCard(fakeCard);   // Kart bakiyesinin Güncellenmesi
     if((await this.paymentService.pay(payment).toPromise()).success){  // Ödeme işleminin Gerçekleşmesi

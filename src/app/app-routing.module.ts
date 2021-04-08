@@ -12,6 +12,8 @@ import { ColorAddComponent } from './components/addComponents/color-add/color-ad
 import { CarAddComponent } from './components/addComponents/car-add/car-add.component';
 import { CarListComponent } from './components/listComponents/car-list/car-list.component';
 import { LoginGuard } from './guards/login.guard';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
@@ -36,7 +38,10 @@ const routes: Routes = [
   
   {path:"brands/add", component:BrandAddComponent,canActivate:[LoginGuard]},
   {path:"colors/add", component:ColorAddComponent,canActivate:[LoginGuard]},
-  {path:"cars/add", component:CarAddComponent,canActivate:[LoginGuard]}, //Componente guard ekledik
+  {path:"cars/add", component:CarAddComponent,canActivate:[LoginGuard]}, //Componente guard ekledik, Bu sayfanın görüntülenmesi için korunma sağlıyacak
+
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
 ];
 
