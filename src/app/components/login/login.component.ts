@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Customer } from 'src/app/models/customer';
+import { UserDetail } from 'src/app/models/DTOs/userDetail';
 import { AuthService } from 'src/app/services/auth.service';
+import { CustomerService } from 'src/app/services/customer.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -13,12 +16,18 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
+
+  userDetail:UserDetail
+  // customerDetail:CustomerDetails;
+
   constructor(
     private formBuilder: FormBuilder,
-    private localStorage:LocalStorageService,
+    private customerService:CustomerService,
+    private localStorageService:LocalStorageService,
    private authService:AuthService,
     private toastrService: ToastrService,
     private router:Router
+
   ) {}
 
   ngOnInit(): void {
@@ -44,8 +53,9 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(loginModel).subscribe(response=>{
         this.toastrService.info(response.message)
-        this.localStorage.setItem("token",response.data.token)
-        this.localStorage.setItem("email", this.loginForm.get("email")?.value)
+        this.localStorageService.setItem("token",response.data.token)
+        this.localStorageService.setItem("email", this.loginForm.get("email")?.value)
+        this.getCustomerByEmail(loginModel.email);
         setTimeout(() => { this.router.navigate(['/cars']) }, 1000);
         },responseError=>{
         //console.log(responseError)
@@ -53,4 +63,16 @@ export class LoginComponent implements OnInit {
       })
     }
   }
+
+  ///Kullanılmadı
+  //İyileştiriliyor // CustomerDetail Sınıfı döndürüp Local Storage de json objesi olarak tutulacak
+  getCustomerByEmail(email: string) {
+    this.customerService.getCustomerByEmail(email).subscribe(response => {
+       this.userDetail = response.data;
+       console.log(response.data.name);
+
+       this.localStorageService.setCurrentCustomer(this.userDetail);
+    });
+ }
+
 }

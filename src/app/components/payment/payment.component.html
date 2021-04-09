@@ -1,4 +1,4 @@
-<div class="card mt-4">
+<!-- <div class="card mt-4">
     <div class="card-header text-center">
       <strong>İşlem Özeti</strong>
     </div>
@@ -97,4 +97,124 @@
         </button>
       </div>
     </div>
-  </div>
+  </div> -->
+
+
+  <div class="row">
+  
+    <div class="col-md-6">
+      <div class="card rounded-0">
+        <div class="card-header fw-bold text-center lead py-3">Fatura Bilgileri</div>
+  
+        <div class="card-body p-0">
+          <table class="table table-striped">
+            <tbody>
+  
+              <tr>
+                <th>Kullanıcı</th>
+                <td>{{ userDetail.name }}</td>
+              </tr>
+  
+              <tr>
+                <th>Araba Marka/Model</th>
+                <td>{{ cars.brandName }} {{cars.carName}}</td>
+              </tr>
+  
+              <tr>
+                <th>Kiralama Tarihi</th>
+                <td>{{rental.rentDate}}</td>
+              </tr>
+  
+              <tr>
+                <th>Teslim Tarihi</th>
+                <td>{{rental.returnDate}}</td>
+              </tr>
+  
+              <tr>
+                <th>Total Price</th>
+                <td>{{ amountOfPayment | currency:'₺ ' }} </td>
+              </tr>
+  
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-6">
+      <div class="card rounded-0">
+        <div class="card-header fw-bold text-center lead py-3">Kart Bilgileri</div>
+  
+        <div class="card-body">
+          <form [formGroup]="paymentAddForm" (ngSubmit)="rentACar()">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="name"  placeholder="cardOnName" formControlName="name">
+              <label for="cardOnName">Kart Üzerindeki İsim</label>
+            </div>
+  
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="number" placeholder="cardNumber" formControlName="number">
+              <label for="cardNumber">Kart Numarası</label>
+            </div>
+  
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="expirationDate" placeholder="cardValidDate" formControlName="expirationDate">
+                  <label for="cardValidDate">Geçerlilik Tarihi</label>
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="cvv" placeholder="cardCvv" formControlName="cvv">
+                  <label for="cardCvv">Kart arkasında son üç hane</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-check">
+              <input #saveUserNameCheckBox class="form-check-input" type="checkbox"  id="saveUserNameCheckBox" 
+              [checked]="saveCard" 
+              (change)="onSaveCardChanged(saveUserNameCheckBox.checked)"
+              >
+              <label class="form-check-label" for="flexCheckChecked">
+                Kart Bilgilerimi Kaydet
+              </label>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary">Ödeme Yap</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+         <table class="table" >
+           <tbody>
+             <thead>Kayıtlı Kartlarım</thead>
+             <tr>
+               <th>Kart Id</th>
+               <th>Kart Numarası</th>
+               <th>Kart Üzerindeki Ad</th>
+               <th>Kart SKT</th>
+               <th>Kart CVV</th>
+               <th>Kart Tipi</th>
+               <th></th>
+  
+              </tr>
+             <tr *ngFor="let card of cards"  >
+               <td>{{card.id}}</td>
+               <td>{{card.name}}</td>
+               <td>{{card.number}}</td>
+               <td>{{card.cvv}}</td>
+               <td>{{card.expirationDate}}</td>
+               <td>{{card.balance}}</td>
+               <td (click)="setCurrentCard(card.id)"><button class="btn btn-info">Seç</button></td>
+              </tr>
+           </tbody>
+         </table>
+      </div>
+    </div>
+  

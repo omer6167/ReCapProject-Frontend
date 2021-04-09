@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
@@ -9,11 +9,12 @@ import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { RentalComponent } from './components/rental/rental.component';
+
 import { CarImageComponent } from './components/car-image/car-image.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
@@ -50,8 +51,20 @@ import { UserPasswordUpdateComponent } from './components/userOperations/user-pa
     BrandFilterPipe,
     ColorFilterPipe,
     FooterComponent,
-    SidebarComponent,     
-    PaymentComponent, RentComponent, CarAddComponent, ColorAddComponent, BrandAddComponent, BrandListComponent, ColorListComponent, CarListComponent, LoginComponent, RegisterComponent, FakeCardListComponent, UserInfosUpdateComponent, UserPasswordUpdateComponent
+    SidebarComponent,
+    PaymentComponent,
+    RentComponent,
+    CarAddComponent,
+    ColorAddComponent,
+    BrandAddComponent,
+    BrandListComponent,
+    ColorListComponent,
+    CarListComponent,
+    LoginComponent,
+    RegisterComponent,
+    FakeCardListComponent,
+    UserInfosUpdateComponent,
+    UserPasswordUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +78,7 @@ import { UserPasswordUpdateComponent } from './components/userOperations/user-pa
     }),
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

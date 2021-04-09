@@ -41,13 +41,12 @@ export class RegisterComponent implements OnInit {
         response => { //Başarılı Register
           this.toastrService.info(response.message + " You redirect to login page.")
           localStorage.setItem("token", response.data.token)
-          setTimeout(() => { this.router.navigate(['/login']) }, 3000); //Js Fonksiyonu
+          setTimeout(() => { this.router.navigate(['/login']) }, 3000); //Js Fonksiyonu, timer ile aynı işi yapar
         }, //Başarısız Register
         responseError => {
           this.toastrService.error(responseError.error)
         })
       }
   }
-
 
 }

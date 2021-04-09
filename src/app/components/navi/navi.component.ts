@@ -47,7 +47,7 @@ export class NaviComponent implements OnInit {
   }
 
   getCustomerId(email:string){
-      this.customerService.getCustomersByEmail(email == null ? email="" : email).subscribe(
+      this.customerService.getCustomerByEmail(email == null ? email="" : email).subscribe(
         response => {
           this.userDetails = response.data;
           this.localStorage.setItem("customerId", this.userDetails.id)

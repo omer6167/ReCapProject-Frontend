@@ -1,13 +1,24 @@
 import { Injectable } from '@angular/core';
+import { observable, Observable } from 'rxjs';
+import { Customer } from '../models/customer';
+import { UserDetail } from '../models/DTOs/userDetail';
+import { CustomerService } from './customer.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
+  currentCustomer: string = 'currentCustomer';
+  tokenKey = "token"
+  userDetails:UserDetail
+
   localStorage:Storage
 
-  constructor() {
+  constructor(
+    private customerService:CustomerService
+  ) {
+    
     this.localStorage = window.localStorage;
   }
 
@@ -26,4 +37,50 @@ export class LocalStorageService {
   clear(){
     this.localStorage.clear();
   }
+
+  //--------------------------// İyileştirilecek
+  
+  get isLocalStorageSupported(): boolean {return !!localStorage}
+
+  getCurrentCustomer():UserDetail{
+    return JSON.parse(localStorage.getItem(this.currentCustomer));
+  }
+
+  //User Detail set ediyoruz,kontrolü sağlanacak
+  setCurrentCustomer(userDetail:UserDetail){
+    localStorage.setItem(this.currentCustomer,JSON.stringify(userDetail));
+  }
+  
+  removeCurrentCustomer(){
+    localStorage.removeItem(this.currentCustomer);
+  }
+
+  setToken(token: string){
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  getToken(){
+    return localStorage.getItem(this.tokenKey)
+  }
+
+  removeToken(){
+    localStorage.removeItem(this.tokenKey)
+  }
+
+  //email local storage içerine giricek mi
+  getCustomerId():UserDetail{
+    this.customerService.getCustomerByEmail(this.localStorage.getItem("email")).subscribe(
+      response => {
+        this.userDetails = response.data;
+        this.localStorage.setItem("customerId", this.userDetails.id.toString()) //String olarak local stroge a set ettik customerId keyini kullanmadık
+      },responseError => 
+      { 
+    console.log("You are not customer yet.") } //İyileştirilecek       
+    )
+    return this.userDetails;
+}
+  // clear(){
+  //   this.localStorage.clear();
+  // }
+
 }
