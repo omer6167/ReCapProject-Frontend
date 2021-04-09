@@ -60,15 +60,17 @@
                 </span>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" routerLink="/updateinfos"
-                  ><i class="fa fa-edit"></i>&nbsp;Update Account Information</a
-                >
-                <a class="dropdown-item" routerLink="/updatepassword"
-                  ><i class="fa fa-lock"></i>&nbsp;&nbsp;Change Password</a
-                >
-                <a class="dropdown-item" (click)="logout()"
-                  ><i class="fa fa-sign-out"></i>&nbsp;Logout</a
-                >
+                <a class="dropdown-item" routerLink="updateinfos">
+                  <i class="fa fa-edit"></i>&nbsp;Update Account Information</a>
+
+                <a class="dropdown-item" routerLink="updatepassword">
+                  <i class="fa fa-lock"></i>&nbsp;&nbsp;Change Password</a>
+                  
+                <a class="dropdown-item" routerLink="cardslist">
+                  <i class="fab fa-edit"></i>&nbsp;Kayıtlı Kredi Kartları</a>
+
+                <a class="dropdown-item" (click)="logout()">
+                  <i class="fa fa-sign-out"></i>&nbsp;Logout</a>
               </div>
             </li>
           </div>

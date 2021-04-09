@@ -14,6 +14,9 @@ import { CarListComponent } from './components/listComponents/car-list/car-list.
 import { LoginGuard } from './guards/login.guard';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FakeCardListComponent } from './components/listComponents/fake-card-list/fake-card-list.component';
+import { UserInfosUpdateComponent } from './components/userOperations/user-infos-update/user-infos-update.component';
+import { UserPasswordUpdateComponent } from './components/userOperations/user-password-update/user-password-update.component';
 
 
 const routes: Routes = [
@@ -34,7 +37,7 @@ const routes: Routes = [
   {path:"brands", component:BrandListComponent,canActivate:[LoginGuard]},
   {path:"colors", component:ColorListComponent,canActivate:[LoginGuard]},
   {path:"carslist",component:CarListComponent,canActivate:[LoginGuard]},
-
+  {path:"cardslist",component:FakeCardListComponent,canActivate:[LoginGuard]},
   
   {path:"brands/add", component:BrandAddComponent,canActivate:[LoginGuard]},
   {path:"colors/add", component:ColorAddComponent,canActivate:[LoginGuard]},
@@ -42,6 +45,11 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+
+  
+  { path: 'updateinfos', component: UserInfosUpdateComponent ,canActivate:[LoginGuard]},
+  { path: 'updatepassword', component: UserPasswordUpdateComponent ,canActivate:[LoginGuard]},
+
 
 ];
 

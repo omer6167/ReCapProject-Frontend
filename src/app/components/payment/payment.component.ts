@@ -43,6 +43,7 @@ export class PaymentComponent implements OnInit {
 
   cardExist: Boolean = false;
   saveCard: Boolean = false;
+  registeredCard:Boolean = false
 
   //currentCustomerId:number
 
@@ -62,7 +63,7 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
     this.activateRoute.params.subscribe((params) => {
       if (params['rental']) {
-        this.userDetail = this.localStorageService.getCustomerId();
+        this.userDetail = this.localStorageService.getCustomerId(); // İyileştirilecek
         this.rental = JSON.parse(params['rental']);
         this.getCustomerId = JSON.parse(params['rental']).customerId; //İyileştirilecek
         this.getCustomerDetailById(this.userDetail.id);
@@ -93,10 +94,15 @@ export class PaymentComponent implements OnInit {
 
   getFakeCards() {
     let customerId = this.localStorageService.getCustomerId().id;
+    if (customerId) {
+      this.registeredCard=true
+    }
     this.fakeCardService
       .getCreditCardsByCustomerId(customerId)
       .subscribe((response) => {
         this.cards = response.data;
+      },()=>{
+        this.toastrService.error('Kredi kart bilgileriniz gelmedi','hata')
       });
   }
 

@@ -37,7 +37,7 @@ export class NaviComponent implements OnInit {
 
   logout() {
     this.authService.logout()
-    window.location.reload();
+    window.location.reload(); //
   }
 
   getUser(email:string) {

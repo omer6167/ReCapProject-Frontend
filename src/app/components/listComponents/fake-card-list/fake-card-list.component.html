@@ -1,1 +1,23 @@
-<p>fake-card-list works!</p>
+  
+<div *ngFor="let card of cards" class="card">
+
+    <div class="card-header">   
+  <h5>Kart Bilgileri</h5>
+    </div>
+
+    <div class="card-body">
+
+        <ul class="list-group list-group-flush">
+            <li  class="list-group-item">İsim Soyisim : {{card.name}} </li>
+            <li  class="list-group-item">Kart Numarası :{{card.number}} </li>
+            <li  class="list-group-item">Son Kullanım Tarihi(AA/YY) : {{card.expirationDate}} </li> 
+            <li  class="list-group-item">CVV : {{card.cvv}}</li>  
+        </ul>
+    </div>
+
+    <div class="card-footer">
+        <button type="button"  class="btn btn-info"> Öde</button>
+    </div>
+</div>
+
+<!-- Credi Kartının ay ve yıl sütunu ayrıştırılacak -->
