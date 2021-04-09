@@ -9,7 +9,7 @@ import { CustomerService } from './customer.service';
 })
 export class LocalStorageService {
 
-  currentCustomer: string = 'currentCustomer';
+  currentUser: string = 'currentUser';
   tokenKey = "token"
   userDetails:UserDetail
 
@@ -43,16 +43,16 @@ export class LocalStorageService {
   get isLocalStorageSupported(): boolean {return !!localStorage}
 
   getCurrentCustomer():UserDetail{
-    return JSON.parse(localStorage.getItem(this.currentCustomer));
+    return JSON.parse(localStorage.getItem(this.currentUser));
   }
 
   //User Detail set ediyoruz,kontrolü sağlanacak
   setCurrentCustomer(userDetail:UserDetail){
-    localStorage.setItem(this.currentCustomer,JSON.stringify(userDetail));
+    localStorage.setItem(this.currentUser,JSON.stringify(userDetail));
   }
   
   removeCurrentCustomer(){
-    localStorage.removeItem(this.currentCustomer);
+    localStorage.removeItem(this.currentUser);
   }
 
   setToken(token: string){

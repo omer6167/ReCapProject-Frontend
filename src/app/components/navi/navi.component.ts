@@ -40,12 +40,15 @@ export class NaviComponent implements OnInit {
     window.location.reload(); //
   }
 
+  //İyileştirilecek
   getUser(email:string) {
     this.userService.getUserByEmail(email).subscribe(response => {
       this.userInfos = response.data;
     })
   }
 
+  // Email Bilgisi üzerinden giriş yapan kullanıcının bilgisini alıyoruz ve id değerini storage a set ediyoruz
+  // Metot Sadece Object olarak User Detail bilgisi set edecek
   getCustomerId(email:string){
       this.customerService.getCustomerByEmail(email == null ? email="" : email).subscribe(
         response => {
@@ -55,5 +58,9 @@ export class NaviComponent implements OnInit {
         { 
       console.log("You are not customer yet.") } //İyileştirilecek       
       )
+  }
+
+  getUserDetails(){
+    this.userDetails = this.localStorage.getCurrentCustomer();
   }
 }
