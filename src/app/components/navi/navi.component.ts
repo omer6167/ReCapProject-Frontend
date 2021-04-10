@@ -15,6 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class NaviComponent implements OnInit {
   userInfos:UserInfos
   userDetails:UserDetail
+  name:string
 
   constructor(
     private authService: AuthService,
@@ -25,7 +26,7 @@ export class NaviComponent implements OnInit {
 
   ngOnInit(): void {
     //let email=this.localStorage.getItem("email");
-    this.userDetails= localStorage.getCurrentCustomer();
+    this.name= this.getUserDetails().name;
     // if (email!=null){
     //   this.getUser(email);
     //   this.getCustomerId(email);
@@ -64,7 +65,7 @@ export class NaviComponent implements OnInit {
   //     )
   // }
 
-  getUserDetails(){
-    this.userDetails = this.localStorage.getCurrentCustomer();
+  getUserDetails():UserDetail{
+    return this.localStorage.getCurrentCustomer();
   }
 }

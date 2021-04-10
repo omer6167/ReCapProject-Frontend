@@ -23,30 +23,32 @@ export class LocalStorageService {
   }
 
   getCurrentCustomer(): UserDetail {
-    return JSON.parse(localStorage.getItem(this.currentUser));
+    return JSON.parse(this.getItem(this.currentUser));
   }
 
   //User Detail set ediyoruz,kontrolü sağlanacak
   setCurrentCustomer(userDetail: UserDetail) {
-    localStorage.setItem(this.currentUser, JSON.stringify(userDetail));
+    this.setItem(this.currentUser, JSON.stringify(userDetail));
   }
 
   removeCurrentCustomer() {
-    localStorage.removeItem(this.currentUser);
+    this.removeItem(this.currentUser);
   }
 
   setToken(token: string) {
-    localStorage.setItem(this.tokenKey, token);
+    this.setItem(this.tokenKey, token);
   }
 
   getToken() {
-    return localStorage.getItem(this.tokenKey);
+    return this.getItem(this.tokenKey);
   }
 
   removeToken() {
-    localStorage.removeItem(this.tokenKey);
+    this.removeItem(this.tokenKey);
   }  
 
+  /*--------      ---------*/
+  
   getItem(key: string) {
     return this.localStorage.getItem(key);
   }
