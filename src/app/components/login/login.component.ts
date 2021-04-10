@@ -24,10 +24,9 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private customerService:CustomerService,
     private localStorageService:LocalStorageService,
-   private authService:AuthService,
+    private authService:AuthService,
     private toastrService: ToastrService,
     private router:Router
-
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.localStorageService.setItem("token",response.data.token)
         this.localStorageService.setItem("email", this.loginForm.get("email")?.value)
         this.getCustomerByEmail(loginModel.email);
-        setTimeout(() => { this.router.navigate(['/cars']) }, 1000);
+        setTimeout(() => { this.router.navigate(['']) }, 1000);
         },responseError=>{
         //console.log(responseError)
         this.toastrService.error(responseError.error)

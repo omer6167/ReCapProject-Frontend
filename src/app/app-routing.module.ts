@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'rentals', component: RentalComponent },
   { path: 'customers', component: CustomerComponent },
  
-  { path: "rental/:carId", component:RentalComponent},  
+  { path: "rental/:carId", component:RentalComponent,canActivate:[LoginGuard]},  
   { path: "payment/:rental", component:PaymentComponent,canActivate:[LoginGuard]}, //  /:carDetail// Must make two json object
 
   {path:"brands", component:BrandListComponent,canActivate:[LoginGuard]},
