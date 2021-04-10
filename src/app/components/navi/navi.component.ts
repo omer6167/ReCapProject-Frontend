@@ -24,11 +24,13 @@ export class NaviComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let email=this.localStorage.getItem("email");
-    if (email!=null){
-      this.getUser(email);
-      this.getCustomerId(email);
-    }    
+    //let email=this.localStorage.getItem("email");
+    this.userDetails= localStorage.getCurrentCustomer();
+    // if (email!=null){
+    //   this.getUser(email);
+    //   this.getCustomerId(email);
+    //   localStorage.setCurr()
+    // }    
   }
 
   isLoggedIn() {
@@ -47,18 +49,20 @@ export class NaviComponent implements OnInit {
     })
   }
 
+  
   // Email Bilgisi üzerinden giriş yapan kullanıcının bilgisini alıyoruz ve id değerini storage a set ediyoruz
   // Metot Sadece Object olarak User Detail bilgisi set edecek
-  getCustomerId(email:string){
-      this.customerService.getCustomerByEmail(email == null ? email="" : email).subscribe(
-        response => {
-          this.userDetails = response.data;
-          this.localStorage.setItem("customerId", this.userDetails.id)
-        },responseError => 
-        { 
-      console.log("You are not customer yet.") } //İyileştirilecek       
-      )
-  }
+  
+  // getCustomerId(email:string){
+  //     this.customerService.getCustomerByEmail(email == null ? email="" : email).subscribe(
+  //       response => {
+  //         this.userDetails = response.data;
+  //         this.localStorage.setItem("customerId", this.userDetails.id)
+  //       },responseError => 
+  //       { 
+  //     console.log("You are not customer yet.") } //İyileştirilecek       
+  //     )
+  // }
 
   getUserDetails(){
     this.userDetails = this.localStorage.getCurrentCustomer();

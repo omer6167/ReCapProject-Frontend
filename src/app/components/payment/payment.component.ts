@@ -63,7 +63,7 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
     this.activateRoute.params.subscribe((params) => {
       if (params['rental']) {
-        this.userDetail = this.localStorageService.getCustomerId(); // İyileştirilecek
+        this.userDetail = this.localStorageService.getCurrentCustomer(); // İyileştirilecek
         this.rental = JSON.parse(params['rental']);
         this.getCustomerId = JSON.parse(params['rental']).customerId; //İyileştirilecek
         this.getCustomerDetailById(this.userDetail.id);
@@ -93,7 +93,7 @@ export class PaymentComponent implements OnInit {
   }
 
   getFakeCards() {
-    let customerId = this.localStorageService.getCustomerId().id;
+    let customerId = this.localStorageService.getCurrentCustomer().id;
     if (customerId) {
       this.registeredCard=true
     }

@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(loginModel).subscribe(response=>{
         this.toastrService.info(response.message)
-        this.localStorageService.setItem("token",response.data.token)
-        this.localStorageService.setItem("email", this.loginForm.get("email")?.value)
+        this.localStorageService.setToken(response.data.token)
+        //this.localStorageService.setItem("email", this.loginForm.get("email")?.value) //Kullanımdan kaldırılacak
         this.getCustomerByEmail(loginModel.email);
         setTimeout(() => { this.router.navigate(['']) }, 1000);
         },responseError=>{

@@ -5,82 +5,80 @@ import { UserDetail } from '../models/DTOs/userDetail';
 import { CustomerService } from './customer.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
-
   currentUser: string = 'currentUser';
-  tokenKey = "token"
-  userDetails:UserDetail
+  tokenKey = 'token';
+  userDetails: UserDetail;
 
-  localStorage:Storage
+  localStorage: Storage;
 
-  constructor(
-    private customerService:CustomerService
-  ) {
-    
+  constructor(private customerService: CustomerService) {
     this.localStorage = window.localStorage;
   }
 
-  getItem(key:string){
-    return this.localStorage.getItem(key);
+  get isLocalStorageSupported(): boolean {
+    return !!localStorage;
   }
 
-  setItem(key:string, value:any){
-    this.localStorage.setItem(key,value);
-  }
-
-  removeItem(key:string){
-    this.localStorage.removeItem(key);
-  }
-
-  clear(){
-    this.localStorage.clear();
-  }
-
-  //--------------------------// İyileştirilecek
-  
-  get isLocalStorageSupported(): boolean {return !!localStorage}
-
-  getCurrentCustomer():UserDetail{
+  getCurrentCustomer(): UserDetail {
     return JSON.parse(localStorage.getItem(this.currentUser));
   }
 
   //User Detail set ediyoruz,kontrolü sağlanacak
-  setCurrentCustomer(userDetail:UserDetail){
-    localStorage.setItem(this.currentUser,JSON.stringify(userDetail));
+  setCurrentCustomer(userDetail: UserDetail) {
+    localStorage.setItem(this.currentUser, JSON.stringify(userDetail));
   }
-  
-  removeCurrentCustomer(){
+
+  removeCurrentCustomer() {
     localStorage.removeItem(this.currentUser);
   }
 
-  setToken(token: string){
+  setToken(token: string) {
     localStorage.setItem(this.tokenKey, token);
   }
 
-  getToken(){
-    return localStorage.getItem(this.tokenKey)
+  getToken() {
+    return localStorage.getItem(this.tokenKey);
   }
 
-  removeToken(){
-    localStorage.removeItem(this.tokenKey)
+  removeToken() {
+    localStorage.removeItem(this.tokenKey);
+  }  
+
+  getItem(key: string) {
+    return this.localStorage.getItem(key);
   }
 
-  //email local storage içerine giricek mi
-  getCustomerId():UserDetail{
-    this.customerService.getCustomerByEmail(this.localStorage.getItem("email")).subscribe(
-      response => {
-        this.userDetails = response.data;
-        this.localStorage.setItem("customerId", this.userDetails.id.toString()) //String olarak local stroge a set ettik customerId keyini kullanmadık
-      },responseError => 
-      { 
-    console.log("You are not customer yet.") } //İyileştirilecek       
-    )
-    return this.userDetails;
+  setItem(key: string, value: any) {
+    this.localStorage.setItem(key, value);
+  }
+
+  removeItem(key: string) {
+    this.localStorage.removeItem(key);
+  }
+
+  clear() {
+    this.localStorage.clear();
+  }
 }
-  // clear(){
-  //   this.localStorage.clear();
+
+//email local storage içerine giricek mi //İyileştirilecek
+  // getCustomerId(): UserDetail {
+  //   this.customerService
+  //     .getCustomerByEmail(this.localStorage.getItem('email'))
+  //     .subscribe(
+  //       (response) => {
+  //         this.userDetails = response.data;
+  //         this.localStorage.setItem(
+  //           'customerId',
+  //           this.userDetails.id.toString()
+  //         ); //String olarak local stroge a set ettik customerId keyini kullanmadık
+  //       },
+  //       (responseError) => {
+  //         console.log('You are not customer yet.');
+  //       } //İyileştirilecek
+  //     );
+  //   return this.userDetails;
   // }
-
-}

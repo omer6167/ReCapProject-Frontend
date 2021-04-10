@@ -21,7 +21,7 @@ export class FakeCardListComponent implements OnInit {
   }
 
   getFakeCards() {
-    let customerId = this.localStorageService.getCustomerId().id;
+    let customerId = this.localStorageService.getCurrentCustomer().id;
     this.fakeCardService
       .getCreditCardsByCustomerId(customerId)
       .subscribe((response) => {
