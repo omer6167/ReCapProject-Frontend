@@ -24,10 +24,14 @@ _Call-to-Action buttons_
 </div>
 
 
+# what is the recap project
 ## Proje Açıklaması
 
 
+
+
 ## Proje Resimleri
+
 
 
 
@@ -37,7 +41,7 @@ Released under [MIT](/LICENSE) by [@omer6167](https://github.com/omer6167).
 
 
 
-# Recapproject
+# Other Information for Recapproject 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
