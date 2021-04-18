@@ -22,6 +22,8 @@ _Call-to-Action buttons_
 [![View site - GH Pages](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://omer6167.github.io/ReCapProject-Frontend/)
 
 </div>
+
+
 ## Proje Açıklaması
 
 
