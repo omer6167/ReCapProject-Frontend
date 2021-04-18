@@ -1,3 +1,32 @@
+_Social buttons_
+
+[![omer6167 - ReCapProject-Frontend](https://img.shields.io/static/v1?label=omer6167&message=ReCapProject-Frontend&color=blue&logo=github)](https://github.com/omer6167/ReCapProject-Frontend)
+[![stars - ReCapProject-Frontend](https://img.shields.io/github/stars/omer6167/ReCapProject-Frontend?style=social)](https://github.com/omer6167/ReCapProject-Frontend)
+[![forks - ReCapProject-Frontend](https://img.shields.io/github/forks/omer6167/ReCapProject-Frontend?style=social)](https://github.com/omer6167/ReCapProject-Frontend)
+
+_Repo metadata_
+
+
+[![GitHub tag](https://img.shields.io/github/tag/omer6167/ReCapProject-Frontend?include_prereleases=&sort=semver)](https://github.com/omer6167/ReCapProject-Frontend/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![issues - ReCapProject-Frontend](https://img.shields.io/github/issues/omer6167/ReCapProject-Frontend)](https://github.com/omer6167/ReCapProject-Frontend/issues)
+
+_Call-to-Action buttons_
+
+<div align="center">
+
+[![Use this template](https://img.shields.io/badge/Generate-Use_this_template-2ea44f?style=for-the-badge)](https://github.com/omer6167/ReCapProject-Frontend/generate)
+
+[![View site - GH Pages](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://omer6167.github.io/ReCapProject-Frontend/)
+
+</div>
+
+## License
+
+Released under [MIT](/LICENSE) by [@omer6167](https://github.com/omer6167).
+
+
+
 # Recapproject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
