@@ -1,6 +1,8 @@
 _Social buttons_
 
 [![omer6167 - ReCapProject-Frontend](https://img.shields.io/static/v1?label=omer6167&message=ReCapProject-Frontend&color=blue&logo=github)](https://github.com/omer6167/ReCapProject-Frontend)
+[![Made with TypeScript](https://img.shields.io/badge/TypeScript-4-blue?logo=typescript&logoColor=white)](https://typescriptlang.org)
+
 [![stars - ReCapProject-Frontend](https://img.shields.io/github/stars/omer6167/ReCapProject-Frontend?style=social)](https://github.com/omer6167/ReCapProject-Frontend)
 [![forks - ReCapProject-Frontend](https://img.shields.io/github/forks/omer6167/ReCapProject-Frontend?style=social)](https://github.com/omer6167/ReCapProject-Frontend)
 
@@ -52,5 +54,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
+
+//[![View - Documentation](https://img.shields.io/badge/View-Documentation-blue?style=for-the-badge)](/docs/)
+
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
